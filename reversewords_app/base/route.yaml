@@ -1,0 +1,30 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: reverse-words-route
+  namespace: reverse-words
+  labels:
+    app: reverse-words
+    app.kubernetes.io/instance: prod-reversewords
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  host: reverse-words-route-reverse-words.apps.osc.vacaypollo.org
+  subdomain: ''
+  to:
+    kind: Service
+    name: reverse-words
+    weight: 100
+  port:
+    targetPort: http
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: reverse-words-route-reverse-words.apps.osc.vacaypollo.org
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2020-01-23T17:47:40Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: apps.osc.vacaypollo.org
