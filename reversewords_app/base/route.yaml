@@ -25,6 +25,5 @@ status:
       conditions:
         - type: Admitted
           status: 'True'
-          lastTransitionTime: '2020-01-23T17:47:40Z'
       wildcardPolicy: None
       routerCanonicalHostname: apps.osc.vacaypollo.org
